@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <style>
+        #table {
+            background-color: rgb(8, 108, 223);
+            border-radius: 15px;
+            padding: 2em 1em 1em 1em;
+            margin: auto;
+            width: 292px;
+            height: 240px;
+            clear: both;
+        }
+        .top input {
+            height: 36px;
+            width: 90%;
+            font-weight: bold;
+            border-radius: 4px;
+            margin: 0 0 14px 0;
+            border: 0;
+            padding: 0 1em;
+        }
+        body #keys div {
+            cursor: pointer;
+            width: 66px;
+            height: 36px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 2em;
+            background: white;
+            border-radius: 3px;
+            margin: 3.5px;
+            float: left;
+        }
+        #keys div:hover {
+            background-color: #D6D6D6;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div id="table">
+            <div class="top">
+                <input type="text" v-model="total" />
+            </div>
+            <div id="keys">
+                <div v-on:click="key(7)">7</div>
+                <div v-on:click="key(8)">8</div>
+                <div v-on:click="key(9)">9</div>
+                <div v-on:click="key('+')">+</div>
+                <div v-on:click="key(4)">4</div>
+                <div v-on:click="key(5)">5</div>
+                <div v-on:click="key(6)">6</div>
+                <div v-on:click="key('-')">-</div>
+                <div v-on:click="key(1)">1</div>
+                <div v-on:click="key(2)">2</div>
+                <div v-on:click="key(3)">3</div>
+                <div v-on:click="key('*')">*</div>
+                <div v-on:click="key(0)">0</div>
+                <div v-on:click="clear()" class="clear">c</div>
+                <div v-on:click="equal()">=</div>
+                <div v-on:click="key('/')">/</div>
+            </div>
+        </div> 
+    </div>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                total: 0
+            },
+            methods: {
+                key: function (num) {
+                    return (this.total += num);
+                },
+            clear: function () {
+                return (this.total = 0);
+            },
+            equal: function () {
+                let equal = this.total;
+                return (this.total = eval(equal));
+            }
+            }
+        });
+    </script>
+</body>
+</html>

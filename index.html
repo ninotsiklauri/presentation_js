@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <style>
+        #app{
+            border: black 1px solid;
+            padding: 10px;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hello Vue :)</h1>
+
+    <div id="app">
+        <input v-model="message"><br>
+        {{message}}
+
+        <ul>
+            <li v-for="frameworks in frameworks">{{ frameworks }}</li>
+        </ul>
+        
+        <button v-on:click="buttonClick">click me</button>
+    </div>
+    
+    <script>
+        new Vue({
+            el: '#app',
+            data:{
+                'message':'Hello World',
+                'frameworks': ['Angular', 'React', 'Vue']
+            },
+            methods: {
+                buttonClick: function(){
+                    alert('Hey! I was clicked');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
